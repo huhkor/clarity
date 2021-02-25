@@ -14,7 +14,7 @@ public:
     MainComponent();
     ~MainComponent() override;
 
-    static constexpr auto fftOrder = 10;
+    static constexpr auto fftOrder = 11;
     static constexpr auto fftSize = 1 << fftOrder;
 
     //==============================================================================

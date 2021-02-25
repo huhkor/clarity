@@ -9,7 +9,7 @@ MainComponent::MainComponent() : forwardFFT(fftOrder), spectrogramImage(juce::Im
 
     {
         setOpaque(true);
-        setAudioChannels(2, 0);  // we want a couple of input channels but no outputs
+     //   setAudioChannels(2, 0);  // we want a couple of input channels but no outputs
         startTimerHz(60);
         setSize(700, 500);
     }
@@ -24,7 +24,7 @@ MainComponent::MainComponent() : forwardFFT(fftOrder), spectrogramImage(juce::Im
     else
     {
         // Specify the number of input and output channels that we want to open
-        setAudioChannels (2, 2);
+        setAudioChannels (1, 1);
     }
 }
 
