@@ -48,6 +48,6 @@
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <LIVE_SETTINGS>
-    <WINDOWS/>
+    <WINDOWS buildEnabled="1"/>
   </LIVE_SETTINGS>
 </JUCERPROJECT>
