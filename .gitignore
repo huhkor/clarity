@@ -1,2 +1,6 @@
-Clarity/Builds/
-Clarity/*.jucer
+$ cat .gitignore
+# exclude everything except directory Source
+/*
+!/Clarity/Source
+/Clarity/*
+!/Clarity/Builds/*
