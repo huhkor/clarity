@@ -3,3 +3,6 @@
 
 # Builds
 Clarity/Builds/*
+
+# Juce Libraries
+Clarity/JuceLibraryCode/*
