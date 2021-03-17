@@ -1,13 +1,21 @@
+/*
+  ==============================================================================
 
+    SimpleFFT.h
+    Created: 14 Mar 2021 11:19:35pm
+    Author:  Islam Kemelov
+
+  ==============================================================================
+*/
 
 #pragma once
 
 class SimpleFFT : public juce::AudioAppComponent,
-                      private juce::Timer
+                  private juce::Timer
 {
 public:
     SimpleFFT() :
-#ifdef JUCE_DEMO_RUNNER
+#ifdef Clarity
         AudioAppComponent(getSharedAudioDeviceManager(1, 0)),
 #endif
         forwardFFT(fftOrder),
@@ -15,7 +23,7 @@ public:
     {
         setOpaque(true);
 
-#ifndef JUCE_DEMO_RUNNER
+#ifndef Clarity
         juce::RuntimePermissions::request(juce::RuntimePermissions::recordAudio,
             [this](bool granted)
             {
@@ -27,7 +35,7 @@ public:
 #endif
 
         startTimerHz(60);
-        setSize(700, 500);
+        //setSize(200, 500);
     }
 
     ~SimpleFFT() override
@@ -114,7 +122,7 @@ public:
 
         for (auto y = 1; y < imageHeight; ++y)
         {
-            auto skewedProportionY = 1.0f - std::exp(std::log((float)y / (float)imageHeight) * 0.2f);
+            auto skewedProportionY = 1.0f - std::exp(std::log((float)y / (float)imageHeight) * 0.1f);
             auto fftDataIndex = juce::jlimit(0, fftSize / 2, (int)(skewedProportionY * (int)fftSize / 2));
             auto level = juce::jmap(fftData[fftDataIndex], 0.0f, juce::jmax(maxLevel.getEnd(), 1e-5f), 0.0f, 1.0f);
 
@@ -139,4 +147,3 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SimpleFFT)
 };
-

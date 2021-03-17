@@ -55,26 +55,24 @@ public:
         This class implements the desktop window that contains an instance of
         our MainComponent class.
     */
-    class MainWindow    : public juce::DocumentWindow
+    class MainWindow    : public juce::DocumentWindow,
+                                 juce::ComponentBoundsConstrainer
     {
     public:
         MainWindow (juce::String name)
             : DocumentWindow (name,
-                              juce::Desktop::getInstance().getDefaultLookAndFeel()
-                                                          .findColour (juce::ResizableWindow::backgroundColourId),
-                              DocumentWindow::allButtons)
+                                    juce::Colour::fromRGB(21, 36, 49),
+                                    DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (true);
             setContentOwned (new MainComponent(), true);
-
-           #if JUCE_IOS || JUCE_ANDROID
-            setFullScreen (true);
-           #else
-            setResizable (true, true);
-            centreWithSize (getWidth(), getHeight());
-           #endif
-
-            setVisible (true);
+            centreWithSize(getWidth(), getHeight());
+            setResizable(true, true);
+            this->setMinimumWidth(600);
+            this->setMinimumHeight(500);
+            
+            setVisible(true);
+            
         }
 
         void closeButtonPressed() override
